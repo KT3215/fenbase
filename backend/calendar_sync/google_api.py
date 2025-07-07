@@ -20,8 +20,8 @@ flow = InstalledAppFlow.from_client_secrets_file(
     client_secrets_file, SCOPES
 )
 
-def main():
-  """Shows basic usage of the Google Calendar API.
+def fetch_calendar_events():
+  """Basic usage of the Google Calendar API.
   Prints the start and name of the next 10 events on the user's calendar.
   """
   creds = None
@@ -67,15 +67,22 @@ def main():
     if not events:
       print("No upcoming events found.")
       return
-
+    event_list = []
     # Prints the start and name of the next 10 events
     for event in events:
       start = event["start"].get("dateTime", event["start"].get("date"))
-      print(start, event["summary"])
+      event_list.append({"start": start, "summary": event["summary"]})
+      #print(start, event["summary"])
+    print(event_list)
+    event_dict = {event["start"]: event["summary"] for event in event_list}
+    print(event_dict)
+    return event_dict
 
   except HttpError as error:
     print(f"An error occurred: {error}")
 
+def main():
+    fetch_calendar_events()
 
 if __name__ == "__main__":
   main()
