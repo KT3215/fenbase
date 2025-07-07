@@ -1,0 +1,1 @@
+#api endpoint to fetch announcements table
