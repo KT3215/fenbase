@@ -40,7 +40,7 @@ def fetch_calendar_events():
       flow = InstalledAppFlow.from_client_secrets_file(
           client_secrets_file, SCOPES
       )
-      creds = flow.run_local_server(port=8000)
+      creds = flow.run_local_server(port=8000, access_type='offline', prompt='consent')
     # Save the credentials for the next run
     with open("token.json", "w") as token:
       token.write(creds.to_json())
