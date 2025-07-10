@@ -1,2 +1,2 @@
-#handles oauth & manually syncs endpoints
+# handles oauth & manually syncs endpoints
 

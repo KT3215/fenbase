@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "fenbase_backend",
+    'announcements_sync',
+    'auth_app',
+    'calendar_sync',
 ]
 
 MIDDLEWARE = [
