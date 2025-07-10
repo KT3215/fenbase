@@ -19,11 +19,6 @@ class AuthUserTest(TestCase):
             "/auth_user/", 
             **{"HTTP_AUTHORIZATION": "Bearer my.jwt.token"}
         )
-        '''
-        mock_supabase.table.return_value.select.return_value.execute.return_value.data = [
-            {"email": "test@example.com", "id": "user123"}
-        ]
-        '''
         response = whoami(request)
         data = json.loads(response.content)
 
