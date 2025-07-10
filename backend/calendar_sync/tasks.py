@@ -8,7 +8,7 @@
 
 from hatchet_sdk import Context, EmptyModel, Hatchet
 from pydantic import BaseModel
-from google_api import fetch_calendar_events
+from .google_api import fetch_calendar_events
  
 hatchet = Hatchet(debug=True)
  
@@ -22,11 +22,14 @@ def simple(input: SimpleInput, ctx: Context) -> dict[str, str]:
     return {"status": "success", "fetched_events_count": len(events)}
 
 def main() -> None:
-  worker = hatchet.worker("calendar-worker", workflows=[simple])
-  worker.start()
-  
- 
-  FetchCalendar.run()
+    hatchet = Hatchet()
+    worker = hatchet.worker("calendar-worker", workflows=[simple])
+    worker.start()
+
+    response = hatchet.run(
+        workflow="FetchCalendar",
+        input={"message": "run"}  # might need to change
+    )
  
 if __name__ == "__main__":
     main()
