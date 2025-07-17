@@ -16,4 +16,4 @@ __pycache__/
 
 # Google API stuff
 credentials.json
-token.json
+token.json.DS_Store
