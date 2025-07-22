@@ -66,3 +66,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes organicGradient {
+  0%, 100% {
+    background-position: 25% 35%;
+  }
+  50% {
+    background-position: 35% 45%;
+  }
+}
+
+.organic-radial-bg {
+  background: radial-gradient(circle at 25% 35%, white, #E2E6ED, #012169);
+  background-size: 200% 200%;
+  animation: organicGradient 10s ease-in-out infinite;
+}
